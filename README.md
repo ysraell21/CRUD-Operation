@@ -3,8 +3,10 @@
 ## Instructions for Testing Sample Queries in Postman
 - Get all products
   - http://localhost:3000/products
-- Insert a product
+- Insert a specific product
   - http://localhost:3000/insert_product
+- Insert multiple products
+  - http://localhost:3000/insert_products
 - Get specific product
   - http://localhost:3000/products/{id}
 - Update Specific Product
