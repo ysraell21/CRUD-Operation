@@ -14,6 +14,8 @@
 - Remove Specific Product
   - http://localhost:3000/remove_product/{id}  
 
+### Below is the url that was already deployed
+__https://crud-operation-nodejs-expressjs-mongodb.onrender.com/products__
 #### Below is the sample body
 `{
     "product_name": "San Miguel Beer Super Dry Bottle - 330ml",
