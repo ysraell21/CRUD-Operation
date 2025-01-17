@@ -1,4 +1,4 @@
-__Build a RESTful CRUD API ( NodeJS + ExpressJS + MongoDB )__
+# Build a RESTful CRUD API ( NodeJS + ExpressJS + MongoDB )
 
 ## Instructions for Testing Sample Queries in Postman
 - Get all products
