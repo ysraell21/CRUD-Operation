@@ -16,6 +16,8 @@
 - Remove Multiple Products
   - http://localhost:3000/products/delete-multiple-products
 
+### Here is the URL for the deployed version.
+__https://crud-operation-nodejs-expressjs-mongodb.onrender.com/products__
 #### Below is the sample body
 `{
     "product_name": "San Miguel Beer Super Dry Bottle - 330ml",
