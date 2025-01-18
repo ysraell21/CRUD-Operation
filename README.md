@@ -4,15 +4,17 @@
 - Get all products
   - http://localhost:3000/products
 - Insert a specific product
-  - http://localhost:3000/insert_product
+  - http://localhost:3000/insert
 - Insert multiple products
-  - http://localhost:3000/insert_products
+  - http://localhost:3000/insert-multiple-products
 - Get specific product
   - http://localhost:3000/products/{id}
 - Update Specific Product
   - http://localhost:3000/products/{id}
 - Remove Specific Product
-  - http://localhost:3000/remove_product/{id}  
+  - http://localhost:3000/products/{id}
+- Remove Multiple Products
+  - http://localhost:3000/products/delete-multiple-products
 
 #### Below is the sample body
 `{

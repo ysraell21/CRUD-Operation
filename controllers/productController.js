@@ -1,4 +1,5 @@
 const Product = require("../models/productModel");
+const mongoose = require("mongoose");
 
 // Get All Products
 const getAllProducts = async (_, res) => {
@@ -70,8 +71,39 @@ const removeSpecificProduct = async (req, res) => {
       return res
         .status(404)
         .json({ message: `Cannot find any product with ID ${id}` });
-    const remaining_products = await Product.find({});
-    res.status(200).json(remaining_products);
+    res.status(200).json({ message: "Product deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Delete Multiple Products
+const deleteMultipleProducts = async (req, res) => {
+  try {
+    const { ids } = req.body;
+    if (ids.length === 0)
+      return res.status(400).json({ message: "IDs array is empty" });
+    const validIds = ids.filter((id) => mongoose.Types.ObjectId.isValid(id));
+    if (validIds.length === 0)
+      return res.status(400).json({ message: "IDs array is invalid" });
+    const existingProducts = await Product.find({ _id: { $in: validIds } });
+    const existingIds = existingProducts.map((product) =>
+      product._id.toString()
+    );
+    const notFoundIds = validIds.filter((id) => !existingIds.includes(id));
+    await Product.deleteMany({ _id: { $in: validIds } });
+
+    const response = {
+      message: "Products deleted successfully",
+      deletedIds: existingIds,
+    };
+    if (notFoundIds.length > 0) {
+      response.notFoundIds = notFoundIds;
+      response.error = `The following IDs were not found: ${notFoundIds.join(
+        ", "
+      )}`;
+    }
+    res.status(200).json(response);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -84,4 +116,5 @@ module.exports = {
   getSpecificProduct,
   updateSpecificProduct,
   removeSpecificProduct,
+  deleteMultipleProducts,
 };

@@ -7,6 +7,7 @@ const {
   insertProduct,
   removeSpecificProduct,
   updateSpecificProduct,
+  deleteMultipleProducts
 } = require("./controllers/productController");
 
 const app = express();
@@ -34,7 +35,8 @@ app.get("/", (_, res) => {
 
 app.get("/products", getAllProducts);
 app.get("/products/:id", getSpecificProduct);
-app.post("/insert_product", insertProduct);
-app.post("/insert_products", insertMultipleProducts);
+app.post("/products/insert", insertProduct);
+app.post("/products/insert-multiple-products", insertMultipleProducts);
 app.put("/products/:id", updateSpecificProduct);
-app.delete("/remove_product/:id", removeSpecificProduct);
+app.delete("/products/:id", removeSpecificProduct);
+app.post("/products/delete-multiple-products", deleteMultipleProducts);
